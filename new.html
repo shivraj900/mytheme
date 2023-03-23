@@ -1,0 +1,71 @@
+
+Conversation opened. 1 unread message.
+
+Skip to content
+Using Gmail with screen readers
+1 of 1,901
+(no subject)
+Inbox
+
+Legend Gaming
+09:04 (0 minutes ago)
+to me
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>javascrpt Form</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <section>
+        <div class="container-fluid row text-center">
+            <div class="mainbox col-md-6">
+                <div><label>Name :<input type="text" id="nm" class="unm  rounded w-100"></label></div>
+                <div><label>E-mail :<input type="text" id="email" class="eid  rounded w-100"></label></div>
+                <div><label>Password :<input type="text" id="pass" class="pwd rounded w-100"></label></div>
+                <button class="btn btn-primary" onclick="call()">Click Me</button>
+            </div>
+            <div class="mainbox2 col-md-6">
+                <div><label>Name :<input type="text" id="nm2" class="unm2 rounded w-100"></label></div>
+                <div><label>E-mail :<input type="text" id="email2" class="eid2 rounded w-100"></label></div>
+                <div><label>Password :<input type="text" id="pass2" class="pwd2 rounded w-100"></label></div>
+            </div>
+        </div>
+    </section>
+    <section>
+        <div class="container-fluid">
+            <table class=" table-hover table-bordered table-striped table ">
+                <thead class="">
+                    <tr>
+                        <th>Name</th>
+                        <th>E-mail</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+                <tbody id="tbd">
+                </tbody>
+            </table>
+        </div>
+    </section>
+    <script>
+        let call = () => {
+            let a = nm.value
+            let b = email.value
+            let c = pass.value
+            nm2.value = a; nm.value = ""
+            email2.value = b; email.value = ""
+            pass2.value = c; pass.value = ""
+            let data = "";
+            data = `<tr> <td>${a}</td> <td>${b}</td> <td>${c}</td> <td><button class="btn btn-danger rounded border" id="but">Edit</button></td> <td><button class="btn btn-success rounded border" value="delete" id="but">delete</button></td></tr> `
+            tbd.innerHTML += data
+        }
+    </script>
+</body>
+
+</html>

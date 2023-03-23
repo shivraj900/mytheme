@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Signup</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Signup form</h2>
+    <form method="post" name="frm" onsubmit="formSubmit(event)">
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" class="form-control" id="nm" placeholder="Enter name" name="nm" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email:</label>
+        <input type="email" class="form-control" id="email" placeholder="Enter email" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="pwd">Password:</label>
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="pswd">
+      </div>
+      <div class="form-group">
+        <label for="pwd">Age:</label>
+        <input type="text" class="form-control" id="age" placeholder="Enter Age" name="age">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <table class="table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>Age</th>
+          </tr>
+        </thead>
+        <tbody id="data">
+            
+        </tbody>
+      </table>
+</div>
+<script>
+    
+    function formSubmit(event){
+        event.preventDefault();
+        // GetData from localStorage 
+        let uData = localStorage.getItem("8pm");
+        if(uData != null){
+            arr = JSON.parse(uData);
+        }
+        else{
+            arr = []
+        }
+        
+        let name = frm.nm.value;
+        let email = frm.email.value;
+        let pass = frm.pswd.value;
+        let age = frm.age.value;
+        // array data push 
+        arr.push({"uname": name, "uemail": email, "upwd": pass, "uage": age });
+        localStorage.setItem("8pm", JSON.stringify(arr)); 
+        /*  localStorage ------------------ string
+            Array -------------- String
+            // JSON : { key : value ,}
+            JSON.stringify
+            ` [{"uname":"admin","uemail":"admin@gmail.com","upwd":"aaa","uage":"20"},{"uname":"admin123","uemail":"admin123@gmail.com","upwd":"aaaa","uage":"21"}] `
+        */
+       getData();
+    }
+    function getData(){
+        
+        let localData = localStorage.getItem("8pm");
+        //console.log(typeof(localData))
+        // Object(string) ------------   JSON.parse(stringname)
+        let userData = JSON.parse(localData); 
+        console.log(userData.length);
+        let str = '';
+        userData.forEach((items, index)=>{
+            str += `<tr><td>${items.uname}</td><td>${items.uemail}</td><td>${items.upwd}</td><td>${items.uage}</td></tr>`
+        });
+        document.getElementById("data").innerHTML = str;
+    }
+    getData();
+</script>
+</body>
+</html>

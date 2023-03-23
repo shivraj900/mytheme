@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+<body>
+    <!-- 
+        localStorgae  : Object which stored the data with key and value paired in the browser
+         =>  The localStorage object stores data with no expiration date.
+
+        => The data is not deleted when the browser is closed, and are available for future sessions.
+
+        sessionStorage : The sessionStorage object let you store key/value pairs in the browser
+        The sessionStorage object stores data for only one session.
+        (The data is deleted when the browser is closed).
+
+     -->
+    Name :  <input type="text" id="nm">
+    <button onclick="setData()">CLick</button>
+    <button onclick="showData()">Show</button>
+    <button onclick="removeData()">Remove</button>
+    <script>
+        function setData(){
+            let name = document.getElementById("nm").value;
+            localStorage.setItem("8am", name);
+        }
+        function showData(){
+            let data = localStorage.getItem("8am");
+            console.log(data);
+        }
+        function removeData(){
+            localStorage.removeItem("8am");
+        }
+    </script>
+</body>
+</html>
